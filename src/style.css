@@ -1,0 +1,1008 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+#aquarium-button {
+  display: none;
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  background: linear-gradient(
+    to bottom,
+    #bfefff,
+    #dff8ff,
+    #fef6f2
+  );
+  color: #2f4858;
+}
+
+button {
+  font: inherit;
+}
+
+.view {
+  display: none;
+  min-height: 100vh;
+}
+
+.view.active {
+  display: block;
+}
+
+.home-page {
+  min-height: 100vh;
+  padding: 40px 24px 70px;
+  text-align: center;
+}
+
+/* --------------------------------------------------
+   TITLE
+-------------------------------------------------- */
+
+.birthday-header h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  color: #ff81f2;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------
+   MAIN PHOTO
+-------------------------------------------------- */
+
+.photo-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.photo-frame {
+  width: min(520px, 90vw);
+  padding: 12px;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transform: rotate(-1deg);
+}
+
+.main-photo {
+  display: block;
+  width: 100%;
+  border-radius: 14px;
+}
+
+/* --------------------------------------------------
+   PARTY / CAKE AREA
+-------------------------------------------------- */
+
+.party-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 40px auto 55px;
+  max-width: 1000px;
+}
+
+.party-dessert {
+  image-rendering: pixelated;
+  object-fit: contain;
+}
+
+.small-dessert {
+  width: clamp(85px, 12vw, 145px);
+}
+
+.cake-button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.main-cake {
+  display: block;
+  width: clamp(150px, 20vw, 240px);
+  image-rendering: pixelated;
+  transition: transform 0.2s ease;
+}
+
+.cake-button:hover .main-cake {
+  transform: scale(1.06);
+}
+
+/* --------------------------------------------------
+   BOOK + AQUARIUM
+-------------------------------------------------- */
+
+.main-attractions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 475px;
+  margin: 0 auto;
+}
+
+.attraction-card {
+  border: 3px solid rgba(255, 255, 255, 0.75);
+  border-radius: 24px;
+  padding: 28px 20px;
+  background: rgba(255, 255, 255, 0.62);
+  color: #2f4858;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.attraction-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.attraction-image {
+  width: min(220px, 80%);
+  aspect-ratio: 1;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.attraction-card h2 {
+  margin: 18px 0 0;
+  color: #ff81f2;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+/* --------------------------------------------------
+   BOOK / AQUARIUM PLACEHOLDER PAGES
+-------------------------------------------------- */
+
+#book-view,
+#aquarium-view {
+  padding: 40px;
+  text-align: center;
+}
+
+.back-button {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------
+   MOBILE
+-------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+  .main-attractions {
+    grid-template-columns: 1fr;
+  }
+
+  .party-section {
+    gap: 10px;
+  }
+
+  .small-dessert {
+    width: 75px;
+  }
+
+  .main-cake {
+    width: 145px;
+  }
+
+}
+
+/* --------------------------------------------------
+   FLOATING BALLOONS
+-------------------------------------------------- */
+
+.balloon-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-page {
+  position: relative;
+  z-index: 1;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -180px;
+  width: 65px;
+  height: 82px;
+  border-radius: 50% 50% 45% 45%;
+  opacity: 0.7;
+  animation: float-balloon linear infinite;
+}
+
+.balloon::before {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 12px solid currentColor;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  width: 2px;
+  height: 90px;
+  background: rgba(80, 80, 80, 0.3);
+}
+
+.balloon-1 {
+  left: 5%;
+  background: #ff81f2;
+  color: #f270e5;
+  animation-duration: 10s;
+  animation-delay: 0s;
+}
+
+.balloon-2 {
+  left: 20%;
+  background: #90dff7;
+  color: #8de4ff;
+  animation-duration: 13s;
+  animation-delay: 5s;
+}
+
+.balloon-3 {
+  left: 38%;
+  background: #ffd47d;
+  color: #f4cd80;
+  animation-duration: 20s;
+  animation-delay: 2s;
+}
+
+.balloon-4 {
+  left: 58%;
+  background: #ff9aa9;
+  color: #f48898;
+  animation-duration: 18s;
+  animation-delay: 8s;
+}
+
+.balloon-5 {
+  left: 76%;
+  background: #a4e8cf;
+  color: #a7f0d5;
+  animation-duration: 14s;
+  animation-delay: 4s;
+}
+
+.balloon-6 {
+  left: 91%;
+  background: #ac90e3;
+  color: #c4a7ff;
+  animation-duration: 16s;
+  animation-delay: 7s;
+}
+
+@keyframes float-balloon {
+
+  0% {
+    transform:
+      translateY(0)
+      translateX(0)
+      rotate(-3deg);
+  }
+
+  50% {
+    transform:
+      translateY(-60vh)
+      translateX(30px)
+      rotate(3deg);
+  }
+
+  100% {
+    transform:
+      translateY(-130vh)
+      translateX(-20px)
+      rotate(-3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .balloon {
+    animation: none;
+    display: none;
+  }
+
+}
+
+/* --------------------------------------------------
+   FLOATING BUBBLES
+-------------------------------------------------- */
+
+.bubble-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -60px;
+
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+
+  /* glassy bubble */
+  border: 2px solid rgba(255, 255, 255, 0.8);
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.35) 8%,
+      rgba(170, 235, 255, 0.16) 35%,
+      rgba(120, 210, 255, 0.08) 65%,
+      rgba(255, 255, 255, 0.25) 100%
+    );
+
+  box-shadow:
+    inset -3px -3px 6px rgba(90, 190, 230, 0.15),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.7),
+    0 0 5px rgba(255, 255, 255, 0.35);
+
+  animation: float-bubble linear infinite;
+}
+
+/* little shine spot */
+.bubble::after {
+  content: '';
+  position: absolute;
+
+  width: 22%;
+  height: 22%;
+
+  top: 18%;
+  left: 22%;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* different bubble positions / sizes */
+
+.bubble-1 {
+  left: 4%;
+  width: 14px;
+  height: 14px;
+  animation-duration: 7s;
+  animation-delay: -1s;
+}
+
+.bubble-2 {
+  left: 11%;
+  width: 28px;
+  height: 28px;
+  animation-duration: 9s;
+  animation-delay: -6s;
+}
+
+.bubble-3 {
+  left: 19%;
+  width: 18px;
+  height: 18px;
+  animation-duration: 8s;
+  animation-delay: -3s;
+}
+
+.bubble-4 {
+  left: 27%;
+  width: 35px;
+  height: 35px;
+  animation-duration: 11s;
+  animation-delay: -8s;
+}
+
+.bubble-5 {
+  left: 35%;
+  width: 12px;
+  height: 12px;
+  animation-duration: 6s;
+  animation-delay: -4s;
+}
+
+.bubble-6 {
+  left: 43%;
+  width: 24px;
+  height: 24px;
+  animation-duration: 9s;
+  animation-delay: -1s;
+}
+
+.bubble-7 {
+  left: 51%;
+  width: 16px;
+  height: 16px;
+  animation-duration: 7s;
+  animation-delay: -5s;
+}
+
+.bubble-8 {
+  left: 59%;
+  width: 31px;
+  height: 31px;
+  animation-duration: 10s;
+  animation-delay: -7s;
+}
+
+.bubble-9 {
+  left: 67%;
+  width: 13px;
+  height: 13px;
+  animation-duration: 6s;
+  animation-delay: -2s;
+}
+
+.bubble-10 {
+  left: 75%;
+  width: 22px;
+  height: 22px;
+  animation-duration: 8s;
+  animation-delay: -6s;
+}
+
+.bubble-11 {
+  left: 84%;
+  width: 37px;
+  height: 37px;
+  animation-duration: 11s;
+  animation-delay: -4s;
+}
+
+.bubble-12 {
+  left: 94%;
+  width: 17px;
+  height: 17px;
+  animation-duration: 7s;
+  animation-delay: -3s;
+}
+
+@keyframes float-bubble {
+
+  0% {
+    transform:
+      translateY(0)
+      translateX(0)
+      scale(0.85);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 0.85;
+  }
+
+  25% {
+    transform:
+      translateY(-32vh)
+      translateX(14px)
+      scale(0.95);
+  }
+
+  50% {
+    transform:
+      translateY(-65vh)
+      translateX(-10px)
+      scale(1);
+  }
+
+  75% {
+    transform:
+      translateY(-98vh)
+      translateX(18px)
+      scale(1.05);
+  }
+
+  95% {
+    opacity: 0.85;
+  }
+
+  100% {
+    transform:
+      translateY(-135vh)
+      translateX(-5px)
+      scale(1.1);
+    opacity: 0;
+  }
+}
+
+.bubble:nth-child(even) {
+  animation-delay: -5s;
+}
+
+.bubble:nth-child(3n) {
+  margin-left: 45px;
+  animation-delay: -8s;
+}
+
+
+/* --------------------------------------------------
+   FISHING BOOK
+-------------------------------------------------- */
+
+#book-view {
+  min-height: 100vh;
+  padding: 35px 25px 70px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #bfefff,
+      #dff8ff,
+      #fef6f2
+    );
+
+  overflow-x: hidden;
+}
+
+.book-page-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+}
+
+.book-title {
+  margin:
+    70px
+    0
+    35px;
+
+  color: #ff81f2;
+
+  font-size:
+    clamp(
+      1.4rem,
+      3vw,
+      2.2rem
+    );
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+
+#fishing-book {
+  margin-left: auto;
+  margin-right: auto;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* every paper page */
+
+.book-page {
+  background: #fff9e9;
+
+  border:
+    1px solid
+    rgba(
+      116,
+      83,
+      52,
+      0.18
+    );
+
+  overflow: hidden;
+}
+
+
+/* tiny paper texture */
+
+.book-page::after {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.18;
+
+  background-image:
+    radial-gradient(
+      #af936e 0.7px,
+      transparent 0.7px
+    );
+
+  background-size:
+    9px 9px;
+}
+
+
+/* --------------------------------------------------
+   BOOK COVER
+-------------------------------------------------- */
+
+.book-cover {
+  background:
+    linear-gradient(
+      145deg,
+      #6e9bca,
+      #466e9d
+    );
+
+  color: #fff8d6;
+
+  border:
+    8px solid
+    #35587e;
+}
+
+.cover-content {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  text-align: center;
+
+  border:
+    4px double
+    rgba(
+      255,
+      231,
+      150,
+      0.7
+    );
+}
+
+.cover-content h2 {
+  margin:
+    18px
+    0;
+
+  font-size:
+    clamp(
+      1.3rem,
+      3vw,
+      2rem
+    );
+
+  line-height: 1.7;
+}
+
+.cover-content p {
+  font-size: 0.65rem;
+
+  line-height: 1.8;
+
+  opacity: 0.85;
+}
+
+.cover-fish {
+  font-size: 4rem;
+}
+
+.cover-heart {
+  display: block;
+
+  margin-top: 25px;
+
+  font-size: 2rem;
+}
+
+
+/* --------------------------------------------------
+   FISH PAGES
+-------------------------------------------------- */
+
+.fish-page {
+  position: relative;
+
+  height: 100%;
+
+  padding:
+    42px
+    35px;
+
+  color: #3f5260;
+
+  text-align: center;
+}
+
+.fish-page h2 {
+  margin:
+    10px
+    0
+    28px;
+
+  color: #43779e;
+
+  font-size:
+    clamp(
+      1.1rem,
+      2vw,
+      1.5rem
+    );
+
+  line-height: 1.6;
+}
+
+.fish-page h3 {
+  margin-top: 35px;
+
+  color: #e07ab6;
+
+  font-size: 0.72rem;
+
+  line-height: 1.5;
+}
+
+.fish-page p {
+  font-size: 0.65rem;
+
+  line-height: 1.9;
+}
+
+.fish-number {
+  margin: 0;
+
+  color: #c58caa;
+
+  font-size:
+    0.55rem !important;
+
+  letter-spacing: 1px;
+}
+
+
+/* fake photo for now */
+
+.sample-fish-photo {
+  width: 100%;
+
+  aspect-ratio:
+    4 / 3;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin:
+    0 auto
+    22px;
+
+  padding: 20px;
+
+  background:
+    #cdeeff;
+
+  border:
+    8px solid
+    white;
+
+  box-shadow:
+    0
+    4px
+    10px
+    rgba(
+      0,
+      0,
+      0,
+      0.12
+    );
+
+  color:
+    rgba(
+      47,
+      72,
+      88,
+      0.65
+    );
+
+  font-size: 0.65rem;
+
+  line-height: 1.8;
+}
+
+.fish-caption {
+  color: #738794;
+}
+
+
+/* fish information */
+
+.fish-divider {
+  margin:
+    -10px
+    0
+    30px;
+
+  color: #f5a9d2;
+
+  font-size: 1.1rem;
+}
+
+.pixel-fish-placeholder {
+  margin-top: 35px;
+
+  font-size: 4rem;
+}
+
+.saltwater-note {
+  color: #7894a5;
+}
+
+
+/* last sample page */
+
+.book-end-page {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.book-end-page h2 {
+  line-height: 1.8;
+}
+
+.end-decoration {
+  margin:
+    30px
+    0;
+
+  color: #74a8c7;
+}
+
+
+
+.pixel-fish-image {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  display: block;
+  margin: -5px auto 0;
+}
+
+
+
+.fish-info-page h3 {
+  margin-top: 0;
+}
+
+.fish-info-page {
+  padding-top: 10px;
+}
+
+/* --------------------------------------------------
+   BOOK CONTROLS
+-------------------------------------------------- */
+
+.book-controls {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 25px;
+
+  margin-top: 35px;
+
+  flex-wrap: wrap;
+}
+
+.book-controls button {
+  border: none;
+
+  padding:
+    13px
+    18px;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  color: #52728b;
+
+  box-shadow:
+    0
+    4px
+    10px
+    rgba(
+      0,
+      0,
+      0,
+      0.1
+    );
+
+  cursor: pointer;
+
+  font-size: 0.6rem;
+
+  transition:
+    transform
+    0.15s ease;
+}
+
+.book-controls button:hover {
+  transform:
+    translateY(-3px);
+}
+
+#page-counter {
+  min-width: 80px;
+
+  color: #7894a5;
+
+  font-size: 0.6rem;
+
+  text-align: center;
+}
+
+
+/* --------------------------------------------------
+   BOOK MOBILE
+-------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+  #book-view {
+    padding:
+      25px
+      10px
+      60px;
+  }
+
+  .book-title {
+    margin-top: 85px;
+
+    font-size: 1.2rem;
+  }
+
+  .fish-page {
+    padding:
+      30px
+      24px;
+  }
+
+  .book-controls {
+    gap: 12px;
+  }
+
+}
+
