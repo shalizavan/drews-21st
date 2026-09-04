@@ -5,18 +5,24 @@ import { fish } from './data/fish.js'
 
 const app = document.querySelector('#app')
 
+const BASE_URL = import.meta.env.BASE_URL
+
 const dorado = fish.find(fishItem => fishItem.id === 'dorado')
 const bluefinTuna = fish.find(fishItem => fishItem.id === 'bluefin-tuna')
+
 const fishPages = fish.map((fishItem) => {
 
-  const leftPhoto =
+  const photoPath =
     fishItem.drewPhoto || fishItem.speciesPhoto
+
+  const leftPhoto =
+    BASE_URL + photoPath.slice(1)
 
   const rightSide =
     fishItem.type === 'saltwater'
       ? `
           <img
-            src="${fishItem.pixelFish}"
+            src="${BASE_URL}${fishItem.pixelFish.slice(1)}"
             alt="Pixel art ${fishItem.name}"
             class="pixel-fish-image"
           >
@@ -48,7 +54,6 @@ const fishPages = fish.map((fishItem) => {
 
         ${rightSide}
 
-        
         <h3>FACT</h3>
 
         <p>
@@ -123,7 +128,7 @@ app.innerHTML = `
           <div class="photo-frame">
 
             <img
-              src="/photos/us.png"
+              src="${BASE_URL}photos/us.png"
               alt="Shaliz and Drew"
               class="main-photo"
             >
@@ -136,13 +141,13 @@ app.innerHTML = `
         <section class="party-section">
 
           <img
-            src="/decorations/sundae-cup.png"
+            src="${BASE_URL}decorations/sundae-cup.png"
             alt=""
             class="party-dessert small-dessert"
           >
 
           <img
-            src="/decorations/banana-split.png"
+            src="${BASE_URL}decorations/banana-split.png"
             alt=""
             class="party-dessert small-dessert"
           >
@@ -155,7 +160,7 @@ app.innerHTML = `
           >
 
             <img
-              src="/decorations/cakedrew.png"
+              src="${BASE_URL}decorations/cakedrew.png"
               alt="Birthday cake"
               class="main-cake"
             >
@@ -163,13 +168,13 @@ app.innerHTML = `
           </button>
 
           <img
-            src="/decorations/chocolate-cake.png"
+            src="${BASE_URL}decorations/chocolate-cake.png"
             alt=""
             class="party-dessert small-dessert"
           >
 
           <img
-            src="/decorations/berry-cake.png"
+            src="${BASE_URL}decorations/berry-cake.png"
             alt=""
             class="party-dessert small-dessert"
           >
@@ -187,7 +192,7 @@ app.innerHTML = `
           >
 
             <img
-              src="/decorations/fishing-book-icon.png"
+              src="${BASE_URL}decorations/fishing-book-icon.png"
               alt="Fishing book"
               class="attraction-image"
             >
@@ -204,7 +209,7 @@ app.innerHTML = `
           >
 
             <img
-              src="/decorations/aquarium-icon.png"
+              src="${BASE_URL}decorations/aquarium-icon.png"
               alt="Aquarium"
               class="attraction-image"
             >
@@ -590,4 +595,3 @@ document
     }
 
   })
-
